@@ -6,9 +6,6 @@
 <title>TROPA DA BÉLGICA - Advanced Elite Kit</title>
 <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Pirata+One&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* -----------------------------------------------------------
-   ESTILO BÉLGICA - GRADIENTE DE FUNDO E GLOW FX
-   ----------------------------------------------------------- */
 
 *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
 
@@ -82,7 +79,7 @@ h3{ color: #cc0000; font-weight: bold; margin-top: 0; display: flex; align-items
     <h1 class="tropa-titulo">TROPA DA BÉLGICA</h1>
 
     <div class="card">
-        <h3>🔫 Registro de Armamento</h3>
+        <h3>🔫 Armamentos</h3>
         <div class="input-row">
             <div>
                 <label>MERCADORIA</label>
@@ -103,12 +100,12 @@ h3{ color: #cc0000; font-weight: bold; margin-top: 0; display: flex; align-items
     </div>
 
     <div class="card">
-        <h3>🛒 Venda de Mercadoria</h3>
+        <h3>🛒 Venda de Mercadorias</h3>
         <div id="lista"></div>
         <div class="action-footer">
             <button class="btn-footer btn-clear" onclick="limpar()">Zerar</button>
             <button class="btn-footer btn-copy-total" onclick="copyTotal()">Copiar Valor</button>
-            <button class="btn-footer btn-finish" onclick="abrirModal()">Finalizar</button>
+            <button class="btn-footer btn-finish" onclick="abrirModal()">Parceria</button>
         </div>
     </div>
 
@@ -162,7 +159,11 @@ function addItem() {
 
     btn.innerText = "REGISTRADO! ✓";
     btn.classList.add('success');
-    setTimeout(() => { btn.innerText = "REGISTRAR ARMAMENTO"; btn.classList.remove('success'); }, 800);
+    
+    setTimeout(() => { 
+        btn.innerText = "REGISTRAR ARMAMENTO"; 
+        btn.classList.remove('success'); 
+    }, 800);
     
     salvarBackup();
     render();
@@ -226,7 +227,6 @@ function remover(i) {
     render(); 
 }
 
-// BOTÃO ZERAR DIRETO (SEM CONFIRMAÇÃO)
 function limpar() { 
     lote = []; 
     modoVenda = 'pista'; 
