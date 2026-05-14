@@ -1,245 +1,270 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TROPA DA BÉLGICA - Advanced Elite Kit</title>
-<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Pirata+One&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REAL MÍDIA </title>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Metal+Mania&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; transition: all 0.2s ease; }
+        
+        body {
+            margin: 0; 
+            font-family: 'Fredoka', sans-serif; 
+            color: #fff; 
+            background-color: #000; 
+            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 4px;
+            display: flex; 
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh;
+            width: 100vw;
+            overflow-x: hidden;
+            padding: 20px;
+        }
 
-*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+        .container { 
+            width: 100%; 
+            max-width: 480px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-body{
-    margin:0; font-family: 'Fredoka', sans-serif; color: #f2f2f2; background-color: #000; 
-    background-image: 
-        radial-gradient(circle at 0% 0%, rgba(204, 0, 0, 0.25) 0%, transparent 45%),
-        radial-gradient(circle at 100% 0%, rgba(255, 204, 0, 0.15) 0%, transparent 45%),
-        radial-gradient(circle at 0% 100%, rgba(255, 204, 0, 0.15) 0%, transparent 45%),
-        radial-gradient(circle at 100% 100%, rgba(204, 0, 0, 0.25) 0%, transparent 45%),
-        url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36z8gAFWNZvXr1f0ZGRpYVq1b9Z2QAALiVCk5fXj43AAAAAElFTkSuQmCC');
-    background-size: auto, auto, auto, auto, 4px 4px;
-    background-attachment: fixed; 
-    min-height: 100vh;
-}
+        .tropa-titulo { 
+            text-align: center; 
+            font-family: 'Metal Mania', cursive; 
+            font-size: 5.5rem; 
+            margin: 0 0 30px 0; 
+            text-transform: uppercase;
+            background: linear-gradient(0deg, #444 0%, #fff 50%, #444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+            animation: glowTitle 3s infinite ease-in-out;
+        }
 
-.container{max-width:850px; margin:auto; padding:20px; position: relative;}
+        @keyframes glowTitle {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.2)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.5)); }
+        }
 
-.tropa-titulo { 
-    text-align:center; color: #fff; font-family: 'Pirata One', cursive; font-size: 5rem; letter-spacing: 8px; margin-bottom: 25px; text-transform: uppercase;
-    text-shadow: 2px 2px 4px #000, 0 0 8px rgba(255, 204, 0, 0.6), 0 0 15px rgba(204, 0, 0, 0.5);
-}
+        .card { 
+            background: #0d0d0d;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            position: relative;
+            padding: 2px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 100%;
+        }
 
-.card{ 
-    background: rgba(13, 13, 13, 0.9); border: 1px solid rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 20px; margin-bottom: 20px; 
-    box-shadow: 0 0 20px rgba(204, 0, 0, 0.4); 
-    backdrop-filter: blur(5px);
-}
 
-h3{ color: #cc0000; font-weight: bold; margin-top: 0; display: flex; align-items: center; gap: 12px; font-size: 1.3rem; text-transform: uppercase; }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 12px;
+            padding: 2px; 
+            background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.4) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            filter: blur(1px);
+        }
 
-.input-row { display: grid; grid-template-columns: 2fr 1fr; gap: 15px; margin-bottom: 15px; }
+        .card-content {
+            background: #0d0d0d;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+        }
 
-.select-box, .input-text { 
-    width: 100%; height: 55px; background: #000; border: 1px solid #333; padding: 0 18px; border-radius: 12px; color: #fff; outline: none; font-size: 17px; 
-}
+        .select-box, .input-text { 
+            width: 100%; height: 50px; background: #000; border: 1px solid #333; 
+            padding: 0 15px; border-radius: 4px; color: #fff; font-size: 16px; outline: none;
+        }
 
-.input-row label { display: block; color: #666; font-weight: 600; font-size: 12px; margin-bottom: 6px; text-transform: uppercase; }
+        .select-box:focus { border-color: #fff; }
 
-.btn-add { 
-    background: #cc0000; color: white; width: 100%; height: 60px; border-radius: 15px; font-family: 'Luckiest Guy', cursive; font-size: 1.5rem; border: none; cursor: pointer; transition: 0.2s; text-transform: uppercase;
-}
-.btn-add.success { background: #00e676 !important; }
+        .btn-add { 
+            background: #fff; color: #000; width: 100%; height: 55px; border-radius: 4px; 
+            font-family: 'Luckiest Guy'; font-size: 1.2rem; border: none; cursor: pointer; 
+            text-transform: uppercase; margin-top: 10px;
+        }
 
-.item-lista { background: rgba(255,255,255,0.02); padding: 14px 20px; border-radius: 12px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid #cc0000; }
+        .item-lista { 
+            background: #111; padding: 12px; border-radius: 6px; margin-bottom: 8px; 
+            display: flex; flex-direction: column; border: 1px solid #222;
+        }
 
-.controls { display: flex; align-items: center; gap: 10px; background: #000; padding: 6px 15px; border-radius: 10px; border: 1px solid #333; }
-.btn-qty { background: transparent; border: none; color: #cc0000; font-size: 1.1rem; font-weight: bold; cursor: pointer; }
-.qty-input { background: transparent; border: none; color: #fff; width: 35px; text-align: center; font-weight: bold; font-size: 1.1rem; outline: none; }
+        .item-info { display: flex; justify-content: space-between; align-items: center; }
+        
+        .cart-controls { display: flex; align-items: center; gap: 8px; background: #000; padding: 4px 8px; border-radius: 4px; border: 1px solid #333; }
+        .btn-cart-qty { background: transparent; border: none; color: #fff; font-size: 1.2rem; font-weight: bold; cursor: pointer; }
 
-.action-footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 20px; }
-.btn-footer { height: 55px; border-radius: 12px; border: none; font-family: 'Luckiest Guy'; cursor: pointer; transition: 0.2s; font-size: 1.1rem; text-transform: uppercase; }
-.btn-clear, .btn-copy-total { background: #222; color: #fff; }
-.btn-finish { background: #cc0000; color: #fff; }
+        .btn-footer { 
+            height: 45px; border-radius: 4px; border: 1px solid #333; font-family: 'Luckiest Guy'; 
+            cursor: pointer; background: #050505; color: #fff; flex: 1;
+        }
 
-.summary-grid { display: flex; justify-content: center; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
-.box { 
-    background: #0d0d0d; border: 1px solid #222; padding: 18px; border-radius: 14px; text-align: center; flex: 1; min-width: 170px; 
-    box-shadow: 0 0 20px rgba(204, 0, 0, 0.4); 
-}
-.box span { font-size: 11px; color: #666; text-transform: uppercase; font-weight: 700; display: block;}
-.val { display: block; font-size: 1.5rem; font-weight: bold; margin-top: 10px; }
+        .btn-finish { 
+            background: #151515; color: #fff; border: 1px solid #333; height: 50px; 
+            width: 100%; margin-top: 10px; border-radius: 4px; font-family: 'Luckiest Guy'; cursor: pointer;
+        }
 
-.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; align-items: center; justify-content: center; }
-.modal-content { background: #0d0d0d; border: 1px solid #333; padding: 40px; border-radius: 20px; width: 90%; max-width: 450px; text-align: center; box-shadow: 0 0 30px rgba(204, 0, 0, 0.6); }
-</style>
+        .btn-finish.active-parc { background: #fff; color: #000; border-color: #fff; }
+
+        .btn-discord { 
+            background: #fff; color: #000; border: none; font-family: 'Luckiest Guy'; 
+            height: 50px; border-radius: 4px; cursor: pointer; width: 100%; margin-top: 5px;
+        }
+
+        .box-total { 
+            background: #000; border: 2px solid #fff; padding: 20px; border-radius: 4px; 
+            text-align: center; margin-top: 15px; width: 100%;
+        }
+
+        .val-total { display: block; font-size: 3.5rem; font-family: 'Luckiest Guy'; color: #fff; margin-top: 5px; }
+    </style>
 </head>
 <body>
 
 <div class="container">
-    <h1 class="tropa-titulo">TROPA DA BÉLGICA</h1>
+    <h1 class="tropa-titulo">REAL MÍDIA</h1>
 
     <div class="card">
-        <h3>🔫 Armamentos</h3>
-        <div class="input-row">
-            <div>
-                <label>MERCADORIA</label>
-                <select id="itemSel" class="select-box">
-                    <option value="" disabled selected>Escolha...</option>
-                    <option value="Sig Sauer,140000,130000,50000,42">Sig Sauer (140k)</option>
-                    <option value="AK,120000,110000,46000,32">AK-47 (120k)</option>
-                    <option value="SMG,80000,75000,30000,22">SMG (80k)</option>
-                    <option value="PT,35000,30000,13500,12">Pistola (35k)</option>
-                </select>
-            </div>
-            <div>
-                <label>QUANTIDADE</label>
-                <input type="number" id="qtd" class="input-text" value="1" min="1">
-            </div>
-        </div>
-        <button id="btnAdd" class="btn-add" onclick="addItem()">REGISTRAR ARMAMENTO</button>
-    </div>
-
-    <div class="card">
-        <h3>🛒 Venda de Mercadorias</h3>
-        <div id="lista"></div>
-        <div class="action-footer">
-            <button class="btn-footer btn-clear" onclick="limpar()">Zerar</button>
-            <button class="btn-footer btn-copy-total" onclick="copyTotal()">Copiar Valor</button>
-            <button class="btn-footer btn-finish" onclick="abrirModal()">Parceria</button>
+        <div class="card-content">
+            <select id="itemSel" class="select-box">
+                <option value="" disabled selected>Selecionar Munição...</option>
+                <option value="PT 100X,5000,7500">PT 100X</option>
+                <option value="SMG 150X,8000,10000">SMG 150X</option>
+                <option value="FUZIL 250X,12000,14000">FUZIL 250X</option>
+                <option value="C4,2500,2900">C4</option>
+            </select>
+            
+            <input type="number" id="qtd" class="input-text" value="1" min="1" style="margin-top:10px;">
+            <button class="btn-add" onclick="addItem()">ADICIONAR ITEM</button>
         </div>
     </div>
 
-    <div class="summary-grid">
-        <div class="box"><span>Peças</span><br><b id="totalPecas" class="val" style="color:#ff9800">0 un.</b></div>
-        <div class="box"><span>Investimento</span><br><b id="totalCusto" class="val">R$ 0</b></div>
-        <div class="box"><span>Lucro</span><br><b id="lucro" class="val" style="color:#00e676">R$ 0</b></div>
-        <div class="box" id="boxTotal"><span>Total Bruto</span><br><b id="totalBruto" class="val">R$ 0</b></div>
+    <div class="card" id="cardCarrinho" style="display:none;">
+        <div class="card-content">
+            <div id="lista"></div>
+            <div style="display:flex; gap:10px;">
+                <button class="btn-footer" onclick="limpar()">Zerar</button>
+                <button class="btn-footer" onclick="copyTotal()">Copiar</button>
+            </div>
+            <button class="btn-finish" id="btnModo" onclick="toggleModo()">MODO: SEM PARCERIA</button>
+            <button class="btn-discord" onclick="enviarLogs()">ENVIAR PARA LOGS 🚀</button>
+        </div>
     </div>
-</div>
 
-<div class="modal-overlay" id="modalConfirmar">
-    <div class="modal-content">
-        <h4 style="color:#fff; font-size:1.5rem; margin-bottom:15px;">Aplicar parceria?</h4>
-        <button class="btn-add" style="height:55px; font-size:1.3rem;" onclick="confirmarVenda()">Aplicar Parceria</button>
-        <p style="margin-top:20px; cursor:pointer; color:#777; font-weight: bold;" onclick="cancelarEManterPista()">Manter Pista</p>
+    <div class="box-total">
+        <span style="font-size: 11px; color: #888; letter-spacing: 3px; font-weight: bold; text-transform: uppercase;">Total a Pagar</span>
+        <b id="totalBruto" class="val-total">R$ 0,00</b>
     </div>
 </div>
 
 <script>
-let lote = [];
-let modoVenda = 'pista';
-let valorNumericoBruto = 0;
+    const _0x_config = {
+        _secret: atob("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTUwNDU4MzA0NzcwNDQ3Nzg5Ny9UQllOM182Q19QbTJDRjRWOWoyNDRtbGxQcmo1Y24tNXJoeWwtQ0RBZHZLY0F2enc5QnJuU0hNdGFjT1h3UWtadzdTaQ==")
+    };
 
-const formatarMoeda = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    let lote = JSON.parse(localStorage.getItem('midia_carrinho')) || [];
+    let modoVenda = localStorage.getItem('midia_modo') || 'pista';
 
-function salvarBackup() {
-    localStorage.setItem('backupLoteBelgica', JSON.stringify(lote));
-}
+    const formatar = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-function carregarBackup() {
-    const salvo = localStorage.getItem('backupLoteBelgica');
-    if (salvo) {
-        lote = JSON.parse(salvo);
+    function salvar() {
+        localStorage.setItem('midia_carrinho', JSON.stringify(lote));
+        localStorage.setItem('midia_modo', modoVenda);
+    }
+
+    function addItem() {
+        const sel = document.getElementById('itemSel');
+        if(!sel.value) return;
+        const [nome, vParc, vPista] = sel.value.split(',');
+        const qtdInput = parseInt(document.getElementById('qtd').value);
+        
+        const itemExistente = lote.find(i => i.nome === nome);
+        if (itemExistente) {
+            itemExistente.qtd += qtdInput;
+        } else {
+            lote.push({ nome, vParc: Number(vParc), vPista: Number(vPista), qtd: qtdInput });
+        }
+        document.getElementById('qtd').value = 1;
         render();
     }
-}
 
-function addItem() {
-    const sel = document.getElementById('itemSel');
-    const btn = document.getElementById('btnAdd');
-    if(!sel.value) return;
-    const [nome, vPista, vParc, custoD, pecas] = sel.value.split(',');
-    const qtdInput = parseInt(document.getElementById('qtd').value);
-    
-    let itemExistente = lote.find(i => i.nome === nome);
-    if (itemExistente) { itemExistente.qtd += qtdInput; } 
-    else {
-        lote.push({ nome, vendaPista: Number(vPista), vendaParceria: Number(vParc), custoD: Number(custoD), pecas: Number(pecas), qtd: qtdInput });
+    function alterarQtdCarrinho(index, delta) {
+        lote[index].qtd = Math.max(1, lote[index].qtd + delta);
+        render();
     }
 
-    btn.innerText = "ARMAMENTO REGISTRADO! ✓";
-    btn.classList.add('success');
-    
-    setTimeout(() => { 
-        btn.innerText = "REGISTRAR ARMAMENTO"; 
-        btn.classList.remove('success'); 
-    }, 800);
-    
-    salvarBackup();
-    render();
-}
-
-function render() {
-    const lista = document.getElementById('lista');
-    lista.innerHTML = lote.length ? '' : '<p style="text-align:center; opacity:0.1; padding:10px;">LOTE VAZIO...</p>';
-    lote.forEach((item, index) => {
-        lista.innerHTML += `
-            <div class="item-lista">
-                <b>${item.nome}</b>
-                <div style="display:flex; align-items:center;">
-                    <div class="controls">
-                        <button class="btn-qty" onclick="alterarQtd(${index}, -1)">-</button>
-                        <input type="text" class="qty-input" value="${item.qtd}" readonly>
-                        <button class="btn-qty" onclick="alterarQtd(${index}, 1)">+</button>
+    function render() {
+        const lista = document.getElementById('lista');
+        const card = document.getElementById('cardCarrinho');
+        card.style.display = lote.length ? 'block' : 'none';
+        lista.innerHTML = '';
+        let total = 0;
+        
+        lote.forEach((item, i) => {
+            let precoUnidade = (modoVenda === 'parceria' ? item.vParc : item.vPista);
+            let subtotal = precoUnidade * item.qtd;
+            total += subtotal;
+            lista.innerHTML += `
+                <div class="item-lista">
+                    <div class="item-info">
+                        <span style="color:#eee; font-weight:600;">${item.nome}</span>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <div class="cart-controls">
+                                <button class="btn-cart-qty" onclick="alterarQtdCarrinho(${i}, -1)">-</button>
+                                <span style="font-weight:bold; min-width:20px; text-align:center;">${item.qtd}</span>
+                                <button class="btn-cart-qty" onclick="alterarQtdCarrinho(${i}, 1)">+</button>
+                            </div>
+                            <span onclick="remover(${i})" style="color:#555; cursor:pointer;">✕</span>
+                        </div>
                     </div>
-                    <span style="margin-left:15px; cursor:pointer; color:#444;" onclick="remover(${index})">✕</span>
-                </div>
-            </div>`;
-    });
-    calcular();
-}
+                    <div style="font-size:10px; color:#888; margin-top:5px;">Subtotal: ${formatar(subtotal)}</div>
+                </div>`;
+        });
 
-function calcular() {
-    let bruto = 0, custo = 0, pecas = 0;
-    lote.forEach(i => {
-        let preco = (modoVenda === 'parceria') ? i.vendaParceria : i.vendaPista;
-        bruto += preco * i.qtd;
-        custo += i.custoD * i.qtd;
-        pecas += i.pecas * i.qtd;
-    });
-    valorNumericoBruto = bruto;
-    document.getElementById('totalBruto').innerText = formatarMoeda(bruto);
-    document.getElementById('totalCusto').innerText = formatarMoeda(custo);
-    document.getElementById('lucro').innerText = formatarMoeda(bruto - custo);
-    document.getElementById('totalPecas').innerText = pecas + ' un.';
-    
-    const boxTotal = document.getElementById('boxTotal');
-    boxTotal.style.borderColor = (modoVenda === 'parceria') ? '#cc0000' : '#222';
-}
+        document.getElementById('totalBruto').innerText = formatar(total);
+        window.ultimoTotal = total;
+        const btn = document.getElementById('btnModo');
+        btn.innerText = modoVenda === 'parceria' ? "MODO: COM PARCERIA 🤝" : "MODO: SEM PARCERIA ✕";
+        btn.className = modoVenda === 'parceria' ? 'btn-finish active-parc' : 'btn-finish';
+        salvar();
+    }
 
-function copyTotal() {
-    if(!lote.length) return;
-    navigator.clipboard.writeText(Math.floor(valorNumericoBruto).toString());
-    const btn = document.querySelector('.btn-copy-total');
-    btn.innerText = "COPIADO!";
-    setTimeout(() => btn.innerText = "COPIAR VALOR", 1000);
-}
+    function remover(i) { lote.splice(i, 1); render(); }
+    function limpar() { if(confirm("Limpar tudo?")) { lote = []; render(); } }
+    function toggleModo() { modoVenda = (modoVenda === 'pista' ? 'parceria' : 'pista'); render(); }
+    function copyTotal() { navigator.clipboard.writeText(window.ultimoTotal); alert("Valor copiado!"); }
 
-function alterarQtd(i, d) { 
-    lote[i].qtd = Math.max(1, lote[i].qtd + d); 
-    salvarBackup();
-    render(); 
-}
-
-function remover(i) { 
-    lote.splice(i, 1); 
-    salvarBackup();
-    render(); 
-}
-
-function limpar() { 
-    lote = []; 
-    modoVenda = 'pista'; 
-    localStorage.removeItem('backupLoteBelgica');
-    render(); 
-}
-
-function abrirModal() { if(lote.length) document.getElementById('modalConfirmar').style.display = 'flex'; }
-function confirmarVenda() { modoVenda = 'parceria'; fecharModal(); }
-function cancelarEManterPista() { modoVenda = 'pista'; fecharModal(); }
-function fecharModal() { document.getElementById('modalConfirmar').style.display = 'none'; calcular(); }
-
-carregarBackup();
+    async function enviarLogs() {
+        if(!lote.length) return;
+        const payload = {
+            embeds: [{
+                title: "📦 REGISTRO REAL MÍDIA",
+                color: 0,
+                fields: [
+                    { name: "Itens", value: lote.map(i => `• ${i.qtd}x **${i.nome}**`).join('\n') },
+                    { name: "Total", value: `\`${formatar(window.ultimoTotal)}\``, inline: true },
+                    { name: "Tipo", value: modoVenda === 'parceria' ? "🤝 Parceria" : "✕ Pista", inline: true }
+                ],
+                footer: { text: "Nova Venda Registrada | " + new Date().toLocaleString() }
+            }]
+        };
+        await fetch(_0x_config._secret, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        alert("Enviado para os logs!");
+        lote = []; render();
+    }
+    render();
 </script>
 </body>
 </html>
